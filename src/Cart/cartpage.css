@@ -1,0 +1,34 @@
+/* ================= CART PAGE ================= */
+
+.cartpage {
+  width: 100vw;
+  min-height: 55vh;
+  height: auto;
+  padding: 20px 10px;
+  overflow-x: hidden;
+  padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* Each cart row */
+
+.cartpage-row {
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 60px 20px;
+
+  font-family: "Google Sans Code", monospace;
+  color: #777;
+}
+
+.cart-empty h2 {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,172 @@
+.scene,
+.a3d {
+  display: grid;
+}
+
+/* scroll container */
+.scroll-stage {
+  min-height: 110vh;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+/* zooming title */
+.zoom-title {
+  position: absolute;
+  inset: 0;
+  bottom: 50vh;
+  color: #fcffc3;
+  transform: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 6rem;
+  font-family: "Shadows Into Light", cursive;
+}
+
+/* carousel viewport */
+.scene {
+  overflow: hidden;
+  perspective: 35em;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100%;
+  transform: translateY(120vh);
+  background: transparent;
+
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 20% 80%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 20% 80%,
+    transparent
+  );
+}
+
+/* 3D spinning rig */
+.a3d {
+  padding-top: 15rem;
+  place-self: center;
+  transform-style: preserve-3d;
+  animation: ry 32s linear infinite;
+}
+
+@keyframes ry {
+  to { transform: rotateY(1turn); }
+}
+
+/* cards */
+.card {
+  --w: 17.5em;
+  --ba: calc(1turn / var(--n));
+
+  grid-area: 1 / 1;
+  width: var(--w);
+  aspect-ratio: 7 / 10;
+  object-fit: cover;
+  border-radius: 1.5em;
+  backface-visibility: hidden;
+
+  transform:
+    rotateY(calc(var(--i) * var(--ba)))
+    translateZ(
+      calc(
+        -1 * (.5 * var(--w) + .5em)
+        / tan(.5 * var(--ba))
+      )
+    );
+}
+
+/* motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .a3d {
+    animation-duration: 128s;
+  }
+}
+
+.zoom-title span{
+  font-size: 1.8rem;
+  font-weight: 300;
+  font-family: "Google Sans Code", monospace;
+}
+
+/* ===============================
+   TABLET (≤1024px)
+================================= */
+@media (max-width: 1024px) {
+
+  .scroll-stage {
+    min-height: 100svh;
+  }
+
+  .zoom-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    bottom: 45vh;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .zoom-title span {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+  }
+
+  .scene {
+    perspective: 28em;
+    height: 90svh;
+    transform: translateY(100vh);
+  }
+
+  .a3d {
+    padding-top: 10rem;
+  }
+
+  .card {
+    --w: 14em;
+  }
+}
+
+/* ===============================
+   MOBILE (≤768px)
+================================= */
+@media (max-width: 768px) {
+
+  .scroll-stage {
+    min-height: 95svh;
+    padding: 2rem 0;
+  }
+
+  /* responsive title scaling */
+  .zoom-title {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+    bottom: 40vh;
+    text-align: center;
+    padding: 0 1.2rem;
+    line-height: 1.1;
+  }
+
+  .zoom-title span {
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+  }
+    
+}
+
+/* ===============================
+   SMALL PHONES (≤480px)
+================================= */
+@media (max-width: 480px) {
+
+  .zoom-title {
+    bottom: 35vh;
+    font-size: 4rem;
+  }
+
+}

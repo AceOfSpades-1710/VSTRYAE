@@ -1,0 +1,33 @@
+/* ================= ORDERS PLANE ================= */
+
+.ordersplane {
+  width: 100vw;
+  min-height: 55vh;
+  height: auto;
+  padding: 20px 10px;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 50px; 
+  padding-bottom: 5rem;
+}
+
+/* Each order row */
+.ordersplane-row {
+  width: 100vw;
+
+  display: flex;
+  justify-content: center; /* centers OrderBox */
+}
+
+.orders-empty{
+  text-align: center;
+  padding: 60px 20px;
+
+  font-family: "Google Sans Code", monospace;
+  color: #777;
+}
+
+.orders-empty h2{
+  margin-bottom: 10px;
+}

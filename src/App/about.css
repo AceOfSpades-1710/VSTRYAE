@@ -1,0 +1,195 @@
+.about-section {
+  width: 100vw;
+  height: 100vh;
+  background: #0000;
+  color: #fcffc3;
+  overflow: hidden;
+}
+
+/* starts single column */
+.about-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* LEFT */
+.about-left {
+  position: relative;
+  width: 92%;
+  height: 50vh;
+  padding: 4rem;
+}
+
+/* centered start */
+.about-title {
+  position: absolute;
+  font-family: "Shadows Into Light", cursive;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  will-change: transform, top, left, font-size;
+}
+
+.about-content {
+  font-family: "Google Sans Code", monospace;
+  margin-top: 12rem;
+  color:rgb(247, 214, 148);
+  max-width: 500px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.about-right {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.about-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+/* From Uiverse.io by vinodjangid07 */ 
+.button {
+  width: 110px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  background-color: #fcffc3;
+  border-radius: 30px;
+  color: rgb(19, 19, 19);
+  font-weight: 600;
+  border: none;
+  position: relative;
+  transition-duration: .2s;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+  padding-left: 8px;
+  transition-duration: .5s;
+}
+
+.svgIcon {
+  height: 25px;
+  transition-duration: 1.5s;
+}
+
+.bell path {
+  fill: rgb(19, 19, 19);
+}
+
+.button:hover {
+  background-color: rgb(247, 214, 148);
+  transition-duration: .5s;
+}
+
+.button:active {
+  transform: scale(0.97);
+  transition-duration: .2s;
+}
+
+.button:hover .svgIcon {
+  transform: rotate(250deg);
+  transition-duration: 1.5s;
+}
+
+/* ===============================
+   TABLET (≤1024px)
+================================= */
+@media (max-width: 1024px) {
+
+  .about-title {
+    font-size: clamp(6rem, 12vw, 12rem);
+  }
+
+  .about-left {
+    padding: 3rem;
+  }
+
+  .about-content {
+    margin-top: 10rem;
+    font-size: 1rem;
+  }
+}
+
+/* ===============================
+   MOBILE (≤768px)
+================================= */
+@media (max-width: 768px) {
+
+  .about-section {
+    height: 80vh;
+    width: 100vw;
+    padding-top: 4rem;
+  }
+
+  .about-container {
+    width: 100vw;
+    grid-template-columns: 1fr;
+  }
+
+  .about-left {
+    width: 100vw;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: justify;
+    box-sizing: border-box;
+  }
+
+  .about-right {
+    display: none;
+  }
+
+  /* KEEP absolute positioning
+     only scale the title */
+  .about-title {
+    font-size: clamp(4rem, 14vw, 7rem);
+    letter-spacing: 2px;
+    top: 0;
+  }
+
+  .about-content {
+    padding-top: 0;
+    max-width: 700px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .about-content {
+    margin-top: clamp(6rem, 25vw, 10rem);
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .about-right {
+    height: 45vh; /* prevents huge image push */
+  }
+}
+
+/* ===============================
+   SMALL PHONES (≤480px)
+================================= */
+@media (max-width: 480px) {
+
+  .about-title {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
+
+  .about-content {
+    margin-top: 6rem;
+    line-height: 1.5;
+  }
+
+  .button {
+    transform: scale(0.9);
+  }
+}

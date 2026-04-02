@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    background-color: black;
+}
+
+*{
+  cursor: url("/public/cursor.png") 0 0, auto;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* IE/old Edge */
+* {
+  -ms-overflow-style: none;
+}

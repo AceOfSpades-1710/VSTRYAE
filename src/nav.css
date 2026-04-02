@@ -1,0 +1,164 @@
+/* ===============================
+   NAV CONTAINER
+================================= */
+.nav {
+  position: fixed;
+
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: auto;
+  padding: 8px 20px;
+
+  background: rgba(82, 81, 81, 0.272);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    inset 0 1px 0 rgba(25, 24, 24, 0.08),
+    0 8px 30px rgba(0, 0, 0, 0.6);
+
+  z-index: 999;
+
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+  opacity: 0;
+  animation: NavReveal 1s ease-in-out 4s forwards;
+}
+
+/* ===============================
+   DOCK MODE (DESKTOP)
+================================= */
+.nav.dock-mode {
+  transform: translateX(-50%) translateY(120%);
+}
+
+.nav.dock-mode.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===============================
+   NAV LIST
+================================= */
+.nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+  margin: 0;
+  padding: 0;
+}
+
+/* ===============================
+   NAV ITEM
+================================= */
+.nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 45px;
+  height: 28px;
+
+  cursor: pointer;
+  overflow: hidden;
+
+  transition: width 0.3s ease;
+}
+
+/* Expanding pill (desktop hover only) */
+.nav-link:hover {
+  width: 110px;
+}
+
+/* ICON */
+.nav-link img {
+  width: clamp(18px, 2.5vw, 22px);
+  height: clamp(18px, 2.5vw, 22px);
+  position: absolute;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* TEXT */
+.nav-link span {
+  position: absolute;
+  font-family: "Google Sans Code", monospace;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fcffc3;
+
+  white-space: nowrap;
+
+  opacity: 0;
+  transform: translateY(0);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Hover behavior */
+.nav-link:hover img {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.nav-link:hover span {
+  opacity: 1;
+}
+
+/* ===============================
+   MOBILE MODE (≤768px)
+================================= */
+@media (max-width: 768px) {
+
+  .nav {
+    /* move navbar to TOP CENTER */
+    top: 15px;
+    bottom: auto;
+    transform: translateX(-50%) !important;
+    padding: 10px 16px;
+  }
+
+  /* Disable dock slide-down on mobile */
+  .nav.dock-mode,
+  .nav.dock-mode.show {
+    transform: translateX(-50%) !important;
+  }
+
+  .nav-list {
+    gap: 18px;
+  }
+
+  /* Touch devices don't hover */
+  .nav-link {
+    width: 40px;
+    height: 20px;
+  }
+
+  .nav-link:hover {
+    width: 40px;
+  }
+
+  /* Always show icon only on mobile */
+  .nav-link span {
+    display: none;
+  }
+}
+
+/* ===============================
+   ANIMATION
+================================= */
+@keyframes NavReveal {
+  to {
+    opacity: 1;
+  }
+}
